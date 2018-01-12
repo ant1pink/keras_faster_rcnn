@@ -20,7 +20,7 @@ def get_data(input_path):
             line_split = line.strip().split(' ')
             # (filename, x1, y1, x2, y2, class_name) = line_split
             (filename1, class_name, subclass, x1, y1, x2, y2) = line_split
-            data_path = 'C:/Users/ruili2.LL/Desktop/RCNN/data/logo/flickr_logos_27_dataset_images/'
+            data_path = './data/flickr_logos_27_dataset_images/'
             filename = os.path.join(data_path, filename1)
             filelist = os.listdir(data_path)
             if filename1 in filelist:
