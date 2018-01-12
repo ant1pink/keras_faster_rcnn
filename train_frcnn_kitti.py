@@ -33,7 +33,7 @@ def train_kitti():
 
     # TODO: the only file should to be change for other data to train
     cfg.model_path = './models/resnet50_weights_tf_dim_ordering_tf_kernels.h5'
-    cfg.simple_label_file = 'C:/Users/ruili2.LL/Desktop/RCNN/data/logo/flickr_logos_27_dataset_training_set_annotation.txt'
+    cfg.simple_label_file = './data/flickr_logos_27_dataset_training_set_annotation.txt'
 
     all_images, classes_count, class_mapping = get_data(cfg.simple_label_file)
 
@@ -97,8 +97,8 @@ def train_kitti():
         print('Could not load pretrained model weights. Weights can be found in the keras application folder '
               'https://github.com/fchollet/keras/tree/master/keras/applications')
 
-    optimizer = Adam(lr=1e-5)
-    optimizer_classifier = Adam(lr=1e-5)
+    optimizer = Adam(lr=1e-3, decay= 1e-4)
+    optimizer_classifier = Adam(lr=1e-3, decay= 1e-4)
     model_rpn.compile(optimizer=optimizer,
                       loss=[losses_fn.rpn_loss_cls(num_anchors), losses_fn.rpn_loss_regr(num_anchors)])
     model_classifier.compile(optimizer=optimizer_classifier,
